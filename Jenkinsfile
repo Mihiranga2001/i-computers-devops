@@ -118,6 +118,7 @@ pipeline {
         npm config set fetch-timeout 300000
 
         npm install
+      
         '''
     }
 
