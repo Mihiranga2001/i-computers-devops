@@ -74,33 +74,55 @@ pipeline {
 
         stage('Install Frontend Dependencies') {
 
-            steps {
+    steps {
 
-                echo 'Installing frontend packages'
+        echo 'Installing frontend packages'
 
-                sh '''
-                cd i-computers-frontend
-                npm install
-                '''
+        sh '''
+        cd i-computers-frontend
 
-            }
+        npm cache clean --force
 
-        }
+        npm config set registry https://registry.npmjs.org/
+
+        npm config set fetch-retries 5
+        npm config set fetch-retry-factor 2
+        npm config set fetch-retry-mintimeout 10000
+        npm config set fetch-retry-maxtimeout 120000
+        npm config set fetch-timeout 300000
+
+        npm install
+        '''
+
+    }
+
+}
 
         stage('Install Backend Dependencies') {
 
-            steps {
+    steps {
 
-                echo 'Installing backend packages'
+        echo 'Installing backend packages'
 
-                sh '''
-                cd i-computers-backend
-                npm install
-                '''
+        sh '''
+        cd i-computers-backend
 
-            }
+        npm cache clean --force
 
-        }
+        npm config set registry https://registry.npmjs.org/
+
+        npm config set fetch-retries 5
+        npm config set fetch-retry-factor 2
+        npm config set fetch-retry-mintimeout 10000
+        npm config set fetch-retry-maxtimeout 120000
+        npm config set fetch-timeout 300000
+
+        npm install
+        '''
+
+    }
+
+}
 
 
         stage('Run Tests') {
