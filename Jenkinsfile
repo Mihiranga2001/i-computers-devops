@@ -76,12 +76,12 @@ pipeline {
 
             steps {
 
-                echo 'Installing frontend packages'
-
                 sh '''
 
-                cd i-computers-frontend
-
+                docker run --rm \
+                -v $(pwd)/i-computers-frontend:/app \
+                -w /app \
+                node:20 \
                 npm install
 
                 '''
@@ -92,16 +92,16 @@ pipeline {
 
 
 
-        stage('Install Backend Dependencies') {
+        sstage('Install Backend Dependencies') {
 
             steps {
 
-                echo 'Installing backend packages'
-
                 sh '''
 
-                cd i-computers-backend
-
+                docker run --rm \
+                -v $(pwd)/i-computers-backend:/app \
+                -w /app \
+                node:20 \
                 npm install
 
                 '''
@@ -109,7 +109,6 @@ pipeline {
             }
 
         }
-
 
 
         stage('Run Tests') {
