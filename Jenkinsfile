@@ -79,17 +79,13 @@ pipeline {
                 echo 'Installing frontend packages'
 
                 sh '''
-                docker run --rm \
-                -v $(pwd)/i-computers-frontend:/app \
-                -w /app \
-                node:20 \
+                cd i-computers-frontend
                 npm install
                 '''
 
-             }
+            }
 
         }
-
 
         stage('Install Backend Dependencies') {
 
@@ -98,10 +94,7 @@ pipeline {
                 echo 'Installing backend packages'
 
                 sh '''
-                docker run --rm \
-                -v $(pwd)/i-computers-backend:/app \
-                -w /app \
-                node:20 \
+                cd i-computers-backend
                 npm install
                 '''
 
