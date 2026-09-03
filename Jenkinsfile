@@ -19,8 +19,11 @@ pipeline {
 
                 echo 'Downloading DevOps files'
 
-                git branch: 'devops',
-                url: 'https://github.com/Mihiranga2001/i-computers-devops.git'
+                git(
+                    branch: 'devops',
+                    credentialsId: 'github',
+                    url: 'https://github.com/Mihiranga2001/i-computers-devops.git'
+                )
 
             }
 
@@ -38,8 +41,7 @@ pipeline {
 
                 rm -rf i-computers-frontend
 
-                git clone -b devops \
-                https://github.com/Mihiranga2001/i-computers-frontend.git
+                git clone -b devops https://Mihiranga2001:${GITHUB_TOKEN}@github.com/Mihiranga2001/i-computers-frontend.git
 
                 '''
 
