@@ -229,7 +229,22 @@ pipeline {
         }
 
 
+        stage('Create Backend Environment') {
 
+            steps {
+
+                echo 'Creating backend .env file'
+
+                sh '''
+                cp /var/jenkins_home/backend.env i-computers-backend/.env
+
+                echo "Checking env file"
+                ls -la i-computers-backend/.env
+                '''
+
+            }
+
+        }
 
         stage('Deploy Application') {
 

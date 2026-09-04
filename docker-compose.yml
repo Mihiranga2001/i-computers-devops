@@ -24,4 +24,4 @@ services:
       - "3000:3000"
 
     env_file:
-      - ../i-computers-backend/.env
+      - ./i-computers-backend/.env
