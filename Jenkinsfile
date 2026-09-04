@@ -248,20 +248,19 @@ pipeline {
 
         stage('Deploy Application') {
 
-
             steps {
-
 
                 echo 'Deploying using Docker Compose'
 
-
                 sh '''
+
+                docker rm -f frontend backend || true
 
                 docker compose down || true
 
+                docker compose pull
 
                 docker compose up -d
-
 
                 '''
 
