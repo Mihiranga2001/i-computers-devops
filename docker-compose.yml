@@ -4,8 +4,6 @@ services:
 
     image: gaurawawickramasinghe/icomputers-frontend:latest
 
-    container_name: frontend
-
     ports:
       - "8080:80"
 
@@ -18,10 +16,8 @@ services:
 
     image: gaurawawickramasinghe/icomputers-backend:latest
 
-    container_name: backend
-
     ports:
       - "3000:3000"
 
     env_file:
-      - ../i-computers-backend/.env
+      - ./i-computers-backend/.env
