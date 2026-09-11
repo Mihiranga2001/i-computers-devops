@@ -2,7 +2,10 @@ services:
 
   frontend:
 
-    image: gaurawawickramasinghe/icomputers-frontend:latest
+    build:
+      context: ../i-computers-frontend
+      args:
+        VITE_BACKEND_URL: http://13.53.231.133/api
 
     ports:
       - "8080:80"
